@@ -7,6 +7,7 @@ import "ant-design-vue/dist/antd.min.css"
 import store from './store'
 Vue.config.productionTip = false
 import startQiankun from "./micro";
+import './shared'
 import './permission'
 startQiankun();
 

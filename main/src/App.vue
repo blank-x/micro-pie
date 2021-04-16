@@ -1,23 +1,13 @@
 <template>
-  <a-config-provider>
-    <section id="ant-main-app">
-      <section class="ant-menu-wrapper">
-        <main-menu :menus="menus"/>
-      </section>
-      <section class="ant-frame-wrapper">
-        <!-- 主应用渲染区，用于挂载主应用路由触发的组件 -->
-        <router-view v-show="$route.name"/>
+  <div>
+    <router-view></router-view>
+  </div>
 
-        <!-- 子应用渲染区，用于挂载子应用节点 -->
-        <section v-show="!$route.name" id="frame"></section>
-      </section>
-    </section>
-  </a-config-provider>
 </template>
 
 <script>
-  import MainMenu from "@/components/menu/index.vue";
-
+  import Cookies from 'js-cookie'
+  import dispatch from "@/shared";
   const menus = [
     {
       key: "Home",
@@ -53,11 +43,21 @@
   export default {
     name: 'App',
     components: {
-      MainMenu
+
     },
     data() {
       return {
         menus,
+      }
+    },
+    methods:{
+      logout(){
+        dispatch.setToken('')
+        dispatch.setUser({})
+        Cookies.remove('token')
+        setTimeout(()=>{
+          this.$router.push('/login')
+        })
       }
     }
   }

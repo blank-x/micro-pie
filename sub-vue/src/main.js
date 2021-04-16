@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
+import Antd from "ant-design-vue";
+import "ant-design-vue/dist/antd.min.css"
 import routes from './routes'
 import store from './store'
 import {initShared} from './shared'
 Vue.config.productionTip = false
 Vue.use(VueRouter);
+Vue.use(Antd);
 
 let router = null;
 let instance = null;

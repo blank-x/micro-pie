@@ -1,2 +1,2 @@
-export const login  = 'login'
-export const init  = 'login'
+export const token  = 'token'
+export const user  = 'user'

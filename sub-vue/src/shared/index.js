@@ -4,55 +4,42 @@ import * as storeTypes from "../store/actionTypes";
 
 
 const handlers = {
-  [sharedTypes.login](token) {
+  [sharedTypes.token](token) {
+    console.log(token)
     store.dispatch(storeTypes.set_token,token)
   },
-  [sharedTypes.init](unUsed,state) {
-    if(state.token){
-      store.dispatch(storeTypes.set_token,state.token)
-    }
-
+  [sharedTypes.user](user) {
+    console.log(user)
+    store.dispatch(storeTypes.set_user,user)
   },
 }
-let initialState = {}
 let setGlobalState = null
 let onGlobalStateChange = null
 let isInit = true
-console.log(12121);
-
 export const initShared = function (action) {
-  console.log(action);
   if(!action.onGlobalStateChange || !action.setGlobalState){
-    console.warn('主、子应用通信失败')
+    console.warn('主、子应用通信连接失败 原因：props 中未传递onGlobalStateChange或者setGlobalState ')
     return
   }
   onGlobalStateChange = action.onGlobalStateChange
   setGlobalState = action.setGlobalState
-  onGlobalStateChange((...a)=>{
-    console.log(a);
-    return;
-    if(!handlers[type]){
-      console.warn('type类型错误')
-      return
-    }
-    console.log({type,payload});
+  onGlobalStateChange((state,prev)=>{
 
-    if(isInit){
-      handlers[sharedTypes.init](null,payload)
-      initialState = payload
-      isInit = false
-    }else{
-      const state = {...initialState,...payload}
-      handlers[type](payload,state)
-    }
+    console.log(state,prev)
+    Object.keys(handlers).forEach(key=>{
+      if(state[key] !== prev[key] || isInit){
+        handlers[key](state[key],prev[key],state,prev)
+      }
+    })
+    isInit = false
   },true);
 };
 
 const dispatch = {
-  add(payload){
+  add(user){
+    console.log(user)
     setGlobalState({
-      type:'add',
-      payload
+      user
     })
   }
 }

@@ -5,6 +5,7 @@ module.exports = {
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
+
     // disableHostCheck: true,  // 这个需要么
   },
   configureWebpack: {

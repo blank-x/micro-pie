@@ -9,6 +9,7 @@
 
 <script>
   import Cookies from 'js-cookie'
+  import dispatch from "../../shared";
   export default {
     name: "index",
     methods:{
@@ -16,7 +17,9 @@
         const token = await new Promise((resolve)=>{resolve(Date.now().toString(16))});
         // 登录成功后，设置 token
         Cookies.set('token',token)
-        this.$store.commit('setToken',token)
+        dispatch.setToken(token)
+        dispatch.setUser({number:0})
+
         this.$router.push({name:'home'})
       }
     }
