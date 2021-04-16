@@ -2,12 +2,20 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
+import store from './store'
+import {initShared} from './shared'
 Vue.config.productionTip = false
 Vue.use(VueRouter);
 
 let router = null;
 let instance = null;
-function render() {
+function render(props) {
+
+  if (props) {
+    // 注入 actions 实例
+    initShared(props);
+  }
+
   // 在 render 中创建 VueRouter，可以保证在卸载微应用时，移除 location 事件监听，防止事件污染
   // 挂载应用
   router = new VueRouter({
@@ -19,6 +27,7 @@ function render() {
 
   instance = new Vue({
     router,
+    store,
     render: (h) => h(App),
   }).$mount("#app");
 }
@@ -43,6 +52,7 @@ export async function mount(props) {
 export async function unmount() {
   console.log("vue micro app  unmount");
   instance.$destroy();
+  instance.$el.innerHTML = '';
   instance = null;
   router = null;
 }

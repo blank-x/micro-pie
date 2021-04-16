@@ -1,11 +1,17 @@
-import Home from "@/pages/home/index.vue";
+import Home from "@/pages/home";
+import Login from "@/pages/login"
 import VueRouter from "vue-router";
 
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home,
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
   },
 ];
 

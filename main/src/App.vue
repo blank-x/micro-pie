@@ -22,7 +22,7 @@
     {
       key: "Home",
       title: "主页",
-      path: "/list"
+      path: "/"
     },
     {
       key: "VueMicroApp",
@@ -36,13 +36,13 @@
     },
     {
       key: "ReactMicroApp",
-      title: "React 主页",
-      path: "/react"
+      title: "React 列表页",
+      path: "/react/list"
     },
     {
       key: "ReactMicroAppList",
-      title: "React 列表页",
-      path: "/react/list"
+      title: "React 详情页",
+      path: "/react/detail"
     },
     {
       key: "StaticMicroApp",

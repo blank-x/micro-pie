@@ -5,6 +5,7 @@ module.exports = {
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
+    // disableHostCheck: true,  // 这个需要么
   },
   configureWebpack: {
     output: {
@@ -13,7 +14,7 @@ module.exports = {
       // 将你的 library 暴露为所有的模块定义下都可运行的方式
       libraryTarget: 'umd',
       // 按需加载相关，设置为 webpackJsonp_VueMicroApp 即可
-      jsonpFunction: `webpackJsonp_VueMicroApp`,
+      jsonpFunction: `webpackJsonp_VueMicroApp`,  // 看看改个名字还行不行
     }
   }
 }
