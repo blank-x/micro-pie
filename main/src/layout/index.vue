@@ -10,9 +10,9 @@
             type="menu-unfold"
         />
         <span>
-          主应用中的 user.number {{ $store.state.user.number }}
+          主应用中的 token {{ $store.state.token }}
         </span>
-        <a-button @click="logout">退出</a-button>
+        <a-button style="align-self: flex-end" @click="logout">退出</a-button>
       </a-layout-header>
       <section class="ant-frame-wrapper">
         <div class="header"></div>

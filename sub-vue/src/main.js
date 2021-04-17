@@ -6,19 +6,17 @@ import "ant-design-vue/dist/antd.min.css"
 import routes from './routes'
 import store from './store'
 import {initShared} from './shared'
+// import * as config from './config'
 Vue.config.productionTip = false
 Vue.use(VueRouter);
 Vue.use(Antd);
 
+// config.setLog('sub-vue')
 let router = null;
 let instance = null;
 function render(props) {
-
-  if (props) {
-    // 注入 actions 实例
-    initShared(props);
-  }
-
+  // 注入 actions 实例
+  initShared(props);
   // 在 render 中创建 VueRouter，可以保证在卸载微应用时，移除 location 事件监听，防止事件污染
   // 挂载应用
   router = new VueRouter({

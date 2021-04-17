@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from "react-redux";
+import store from "./store";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'antd/dist/antd.css'
+import {initShared} from "./shared";
 
-function render() {
+function render(props) {
+  if (props) {
+    // 添加通信支持
+    initShared(props);
+  }
   ReactDOM.render(<React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,document.getElementById("root"));
 }
 if (!window.__POWERED_BY_QIANKUN__) {

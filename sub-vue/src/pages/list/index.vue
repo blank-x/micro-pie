@@ -1,7 +1,7 @@
 <template>
   <div>list
     <div>
-      <a-button @click="addNumber">子应用 修改number</a-button>
+      <a-button @click="setToken">子应用 修改token</a-button>
 
       <div style="margin-top: 20px">来自主应用的token：{{$store.state.token}}</div>
     </div>
@@ -10,14 +10,12 @@
 
 <script>
   import dispatch from "@/shared";
+  console.log(dispatch);
   export default {
     name: "index",
     methods:{
-      addNumber(){
-        dispatch.add({
-          ...this.$store.state.user,
-          number:this.$store.state.user.number+1
-        })
+      setToken(){
+        dispatch.setToken(Math.random())
       }
     }
   }
