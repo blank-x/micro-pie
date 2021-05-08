@@ -4,6 +4,8 @@
       <a-button @click="setToken">子应用 修改token</a-button>
 
       <div style="margin-top: 20px">来自主应用的token：{{$store.state.token}}</div>
+
+      <router-link to="detail3">dtai11221111l</router-link>
     </div>
   </div>
 </template>
